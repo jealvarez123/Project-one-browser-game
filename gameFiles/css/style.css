@@ -1,7 +1,12 @@
+body {
+  text-align: center;
+}
+
 h1 {
   text-align: center;
 }
 
-#myCanvas {
-  border:1px solid #000000;
+canvas {
+  border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
 }
