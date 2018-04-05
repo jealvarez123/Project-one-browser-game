@@ -31,18 +31,19 @@ console.log('Can I kick it?');
 //
 
 
-var myGamePiece;
+var redGamePiece, blackGamePiece;
 
 function startGame() {
-    myGamePiece = new component(30, 30, "red", 10, 120);
+    redGamePiece = new component(20, 20, "red", 10, 120);
+    blackGamePiece = new component(20, 20, "black", 480, 120);
     myGameArea.start();
 }
 
 var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
-        this.canvas.width = 480;
-        this.canvas.height = 270;
+        this.canvas.width = 500;
+        this.canvas.height = 300;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.interval = setInterval(updateGameArea, 20);
@@ -66,6 +67,7 @@ function component(width, height, color, x, y) {
 
 function updateGameArea() {
     myGameArea.clear();
-    myGamePiece.x += 1;
-    myGamePiece.update();
+    redGamePiece.x += 1;
+    redGamePiece.update();
+    blackGamePiece.update();
 }
