@@ -11,7 +11,7 @@ Create a game that everyone can easily pick up and enjoy.
 
 ## Wireframe
 
-![alt text]('https://i.imgur.com/mbkw4Y3m.jpg')
+[Imgur](https://i.imgur.com/mbkw4Y3.jpg)
 
 
 ## Technologies used
