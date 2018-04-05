@@ -11,7 +11,7 @@ Create a game that everyone can easily pick up and enjoy.
 
 ## Wireframe
 
-![alt text]('WireFrame.jpg')
+![alt text]('https://github.com/jealvarez123/Project-one-browser-game/blob/master/gameFiles/WireFrame.jpg')
 
 
 ## Technologies used
