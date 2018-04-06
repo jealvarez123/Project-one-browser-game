@@ -25,16 +25,24 @@ var myGamePiece;
 
 var myGate;
 
-var walls;
+var wall1;
+var wall2;
+var wall3;
+var wall4;
 
 
 
 
 //This makes a call to creates the board and pieces
 function startGame() {
+//                      (width, heigth, color, x, y)
     myGamePiece = new component(20, 20, "red", 0, 0);
     myGate = new component(20, 20, "black", 480, 280);
-    walls = new component(5, 200, "blue", 35, 120);
+    wall3 = new component(200, 5, "purple", 0, 21);
+    wall2 = new component(5, 200 , "pink", 50, 200);
+    wall1 = new component(5, 200, "blue", 35, 120);
+    wall4 = new component(200, 5, "grey", 100, 120);
+
     myGameArea.start();
 }
 
@@ -76,6 +84,8 @@ function component(width, height, color, x, y) {
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 
+
+
     // Allows the box to stay where its at when it stops moving
     this.newPos = function() {
         this.x += this.speedX;
@@ -88,8 +98,8 @@ function component(width, height, color, x, y) {
 
 // this prevents the player from leaving the board
 this.hitTop = () => {
-  var tiptop = myGameArea.canvas.height + this.height;
-  if ( this.y > tiptop) {
+  var tiptop = this.height - 20;
+  if ( this.y <= tiptop) {
     this.y = tiptop;
   }
 
@@ -109,63 +119,67 @@ this.hitRight = () => {
 
 }
 this.hitLeft = () => {
-  var myleft = myGameArea.canvas.width + this.width;
-    if ( this.x > myleft) {
-        this.x -= myleft;
+  var myleft = this.width - 20;
+    if ( this.x < myleft) {
+        this.x = myleft;
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
 //This allows the player to hit the gate and end the game.
+  this.crashWith = function(otherobj) {
+    var myleft = this.x;
+    var myright = this.x + (this.width);
+    var mytop = this.y;
+    var mybottom = this.y + (this.height);
+    var otherleft = otherobj.x;
+    var otherright = otherobj.x + (otherobj.width);
+    var othertop = otherobj.y;
+    var otherbottom = otherobj.y + (otherobj.height);
+    var crash = true;
+    if ((mybottom < othertop) ||
+    (mytop > otherbottom) ||
+    (myright < otherleft) ||
+    (myleft > otherright)) {
+      crash = false;
+      }
+    return crash;
 
+  }
 
-    this.crashWith = function(otherobj) {
-        var myleft = this.x;
-        var myright = this.x + (this.width);
-        var mytop = this.y;
-        var mybottom = this.y + (this.height);
-        var otherleft = otherobj.x;
-        var otherright = otherobj.x + (otherobj.width);
-        var othertop = otherobj.y;
-        var otherbottom = otherobj.y + (otherobj.height);
-        var crash = true;
-        if ((mybottom < othertop) ||
-               (mytop > otherbottom) ||
-               (myright < otherleft) ||
-               (myleft > otherright)) {
-           crash = false;
-        }
-        return crash;
-
-    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // this updates the board, which is just a refresh rate. This also affects piece movement
 function updateGameArea() {
   if (myGamePiece.crashWith(myGate)) {
-        myGameArea.stop(), startGame();
+        myGameArea.stop();
+        startGame();
     } else {
-  myGameArea.clear();
-  myGamePiece.update();
-  myGate.update();
-  walls.update();
-  myGamePiece.newPos();
-  myGamePiece.speedX = 0;
-  myGamePiece.speedY = 0;
-  if (myGameArea.key && myGameArea.key == 65) {myGamePiece.speedX = -5; }
-  if (myGameArea.key && myGameArea.key == 68) {myGamePiece.speedX = 5; }
-  if (myGameArea.key && myGameArea.key == 87) {myGamePiece.speedY = -5; }
-  if (myGameArea.key && myGameArea.key == 83) {myGamePiece.speedY = 5; }
-}
+        myGameArea.clear();
+        myGamePiece.update();
+        myGate.update();
+        wall1.update();
+        wall2.update();
+        wall3.update();
+        wall4.update();
+        myGamePiece.newPos();
+        myGamePiece.speedX = 0;
+        myGamePiece.speedY = 0;
+        if (myGameArea.key && myGameArea.key == 65) {myGamePiece.speedX = -5; }
+        if (myGameArea.key && myGameArea.key == 68) {myGamePiece.speedX = 5; }
+        if (myGameArea.key && myGameArea.key == 87) {myGamePiece.speedY = -5; }
+        if (myGameArea.key && myGameArea.key == 83) {myGamePiece.speedY = 5; }
+            }
 }
