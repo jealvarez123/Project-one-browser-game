@@ -52,8 +52,11 @@ var myGameArea = {
           myGameArea.key = false;
       })
     },
-    clear : function() {
+      clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    },
+      stop : function() {
+        clearInterval(this.interval);
     }
 }
 
@@ -74,10 +77,31 @@ function component(width, height, color, x, y) {
         this.x += this.speedX;
         this.y += this.speedY;
     }
+    this.crashWith = function(otherobj) {
+        var myleft = this.x;
+        var myright = this.x + (this.width);
+        var mytop = this.y;
+        var mybottom = this.y + (this.height);
+        var otherleft = otherobj.x;
+        var otherright = otherobj.x + (otherobj.width);
+        var othertop = otherobj.y;
+        var otherbottom = otherobj.y + (otherobj.height);
+        var crash = true;
+        if ((mybottom < othertop) ||
+               (mytop > otherbottom) ||
+               (myright < otherleft) ||
+               (myleft > otherright)) {
+           crash = false;
+        }
+        return crash;
+    }
 }
 
 // this updates the board, which is just a refresh rate. This also affects piece movement
 function updateGameArea() {
+  if (myGamePiece.crashWith(myGate)) {
+        myGameArea.stop();
+    } else {
   myGameArea.clear();
   myGamePiece.update();
   myGate.update();
@@ -89,4 +113,5 @@ function updateGameArea() {
   if (myGameArea.key && myGameArea.key == 68) {myGamePiece.speedX = 5; }
   if (myGameArea.key && myGameArea.key == 87) {myGamePiece.speedY = -5; }
   if (myGameArea.key && myGameArea.key == 83) {myGamePiece.speedY = 5; }
+}
 }
