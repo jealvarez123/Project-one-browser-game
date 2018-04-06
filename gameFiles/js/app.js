@@ -39,9 +39,9 @@ function startGame() {
     myGamePiece = new component(20, 20, "red", 0, 0);
     myGate = new component(20, 20, "black", 480, 280);
     wall3 = new component(200, 5, "purple", 0, 21);
-    wall2 = new component(5, 200 , "pink", 50, 200);
-    wall1 = new component(5, 200, "blue", 35, 120);
-    wall4 = new component(200, 5, "grey", 100, 120);
+    wall2 = new component(5, 200 , "pink", 200, 21);
+    wall1 = new component(5, 200, "blue", 400, 25);
+    wall4 = new component(200, 5, "grey", 200, 220);
 
     myGameArea.start();
 }
@@ -94,6 +94,8 @@ function component(width, height, color, x, y) {
         this.hitRight();
         this.hitLeft();
         this.hitTop();
+        // this.hitwall();
+
     }
 
 // this prevents the player from leaving the board
