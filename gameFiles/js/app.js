@@ -25,16 +25,18 @@ var myGamePiece;
 
 var myGate;
 
+var walls;
 
 
 //This makes a call to creates the board and pieces
 function startGame() {
     myGamePiece = new component(20, 20, "red", 10, 120);
     myGate = new component(20, 20, "black", 480, 120);
+    walls = new component(5, 200, "blue", 35, 120);
     myGameArea.start();
 }
 
-// this creates the board and also adds the frame refresher
+// this creates the board, adds the frame refresher, adds EventListeners
 var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
@@ -63,7 +65,6 @@ function component(width, height, color, x, y) {
     this.speedY = 0;
     this.x = x;
     this.y = y;
-    // this.keyboarder = new keyboarder();
     this.update = function(){
         ctx = myGameArea.context;
         ctx.fillStyle = color;
@@ -78,13 +79,14 @@ function component(width, height, color, x, y) {
 // this updates the board, which is just a refresh rate. This also affects piece movement
 function updateGameArea() {
   myGameArea.clear();
-  myGamePiece.speedX = 0;
-  myGamePiece.speedY = 0;
-      if (myGameArea.key && myGameArea.key == 65) {myGamePiece.speedX = -1; }
-      if (myGameArea.key && myGameArea.key == 68) {myGamePiece.speedX = 1; }
-      if (myGameArea.key && myGameArea.key == 87) {myGamePiece.speedY = -1; }
-      if (myGameArea.key && myGameArea.key == 83) {myGamePiece.speedY = 1; }
   myGamePiece.update();
   myGate.update();
+  walls.update();
   myGamePiece.newPos();
+  myGamePiece.speedX = 0;
+  myGamePiece.speedY = 0;
+  if (myGameArea.key && myGameArea.key == 65) {myGamePiece.speedX = -5; }
+  if (myGameArea.key && myGameArea.key == 68) {myGamePiece.speedX = 5; }
+  if (myGameArea.key && myGameArea.key == 87) {myGamePiece.speedY = -5; }
+  if (myGameArea.key && myGameArea.key == 83) {myGamePiece.speedY = 5; }
 }
