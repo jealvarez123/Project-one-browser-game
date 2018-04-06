@@ -21,17 +21,18 @@ console.log('Can I kick it?');
 
 
 // This stores the game pieces
-var myGamePiece, blackGamePiece;
+var myGamePiece;
+
+var myGate;
 
 
 
 //This makes a call to creates the board and pieces
 function startGame() {
     myGamePiece = new component(20, 20, "red", 10, 120);
-    // blackGamePiece = new component(20, 20, "black", 480, 120);
+    myGate = new component(20, 20, "black", 480, 120);
     myGameArea.start();
 }
-
 
 // this creates the board and also adds the frame refresher
 var myGameArea = {
@@ -84,7 +85,6 @@ function updateGameArea() {
       if (myGameArea.key && myGameArea.key == 87) {myGamePiece.speedY = -1; }
       if (myGameArea.key && myGameArea.key == 83) {myGamePiece.speedY = 1; }
   myGamePiece.update();
-  // blackGamePiece.update();
+  myGate.update();
   myGamePiece.newPos();
-  myGamePiece.update();
 }
