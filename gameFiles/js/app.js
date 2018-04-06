@@ -28,6 +28,8 @@ var myGate;
 var walls;
 
 
+
+
 //This makes a call to creates the board and pieces
 function startGame() {
     myGamePiece = new component(20, 20, "red", 0, 0);
@@ -79,7 +81,7 @@ function component(width, height, color, x, y) {
         this.x += this.speedX;
         this.y += this.speedY;
         this.hitBottom();
-        this.hitTop();
+        this.hitRight();
     }
 
 // this prevents the player from leaving the board
@@ -90,10 +92,10 @@ function component(width, height, color, x, y) {
         }
 
     }
-    this.hitTop = () => {
-      var tipTop = myGameArea.canvas.height - this.height;
-        if ( this.y > tipTop) {
-            this.y = tipTop;
+    this.hitRight = () => {
+      var myRight = myGameArea.canvas.width - this.width;
+        if ( this.x > myRight) {
+            this.x = myRight;
         }
 
     }
@@ -109,7 +111,7 @@ function component(width, height, color, x, y) {
 
 
 
-
+//This allows the player to hit the gate and end the game.
 
 
     this.crashWith = function(otherobj) {
