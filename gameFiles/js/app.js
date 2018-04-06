@@ -30,8 +30,8 @@ var walls;
 
 //This makes a call to creates the board and pieces
 function startGame() {
-    myGamePiece = new component(20, 20, "red", 10, 120);
-    myGate = new component(20, 20, "black", 480, 120);
+    myGamePiece = new component(20, 20, "red", 0, 0);
+    myGate = new component(20, 20, "black", 480, 280);
     walls = new component(5, 200, "blue", 35, 120);
     myGameArea.start();
 }
