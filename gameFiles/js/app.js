@@ -73,10 +73,45 @@ function component(width, height, color, x, y) {
         ctx.fillStyle = color;
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
+
+    // Allows the box to stay where its at when it stops moving
     this.newPos = function() {
         this.x += this.speedX;
         this.y += this.speedY;
+        this.hitBottom();
+        this.hitTop();
     }
+
+// this prevents the player from leaving the board
+    this.hitBottom = () => {
+      var rockbottom = myGameArea.canvas.height - this.height;
+        if ( this.y > rockbottom) {
+            this.y = rockbottom;
+        }
+
+    }
+    this.hitTop = () => {
+      var tipTop = myGameArea.canvas.height - this.height;
+        if ( this.y > tipTop) {
+            this.y = tipTop;
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     this.crashWith = function(otherobj) {
         var myleft = this.x;
         var myright = this.x + (this.width);
@@ -94,6 +129,7 @@ function component(width, height, color, x, y) {
            crash = false;
         }
         return crash;
+
     }
 }
 
