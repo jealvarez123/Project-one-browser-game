@@ -82,23 +82,39 @@ function component(width, height, color, x, y) {
         this.y += this.speedY;
         this.hitBottom();
         this.hitRight();
+        this.hitLeft();
+        this.hitTop();
     }
 
 // this prevents the player from leaving the board
-    this.hitBottom = () => {
-      var rockbottom = myGameArea.canvas.height - this.height;
-        if ( this.y > rockbottom) {
-            this.y = rockbottom;
-        }
+this.hitTop = () => {
+  var tiptop = myGameArea.canvas.height + this.height;
+  if ( this.y > tiptop) {
+    this.y = tiptop;
+  }
 
+}
+this.hitBottom = () => {
+  var rockbottom = myGameArea.canvas.height - this.height;
+    if ( this.y > rockbottom) {
+        this.y = rockbottom;
     }
-    this.hitRight = () => {
-      var myRight = myGameArea.canvas.width - this.width;
-        if ( this.x > myRight) {
-            this.x = myRight;
-        }
 
+}
+this.hitRight = () => {
+  var myRight = myGameArea.canvas.width - this.width;
+    if ( this.x > myRight) {
+        this.x = myRight;
     }
+
+}
+this.hitLeft = () => {
+  var myleft = myGameArea.canvas.width + this.width;
+    if ( this.x > myleft) {
+        this.x -= myleft;
+    }
+
+}
 
 
 
@@ -138,7 +154,7 @@ function component(width, height, color, x, y) {
 // this updates the board, which is just a refresh rate. This also affects piece movement
 function updateGameArea() {
   if (myGamePiece.crashWith(myGate)) {
-        myGameArea.stop();
+        myGameArea.stop(), startGame();
     } else {
   myGameArea.clear();
   myGamePiece.update();
