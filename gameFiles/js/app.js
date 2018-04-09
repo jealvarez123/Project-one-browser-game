@@ -29,9 +29,38 @@ var wall1;
 var wall2;
 var wall3;
 var wall4;
-var grid;
+
+var wall5;
+var wall6;
+var wall7;
+var wall8;
+var wall9;
+var wall10;
+var wall11;
+var wall12;
+var wall13;
+var wall14;
+var wall15;
+var wall16;
+var wall17;
+var wall18;
+var wall19;
+
+var wall20;
+var wall21;
+var wall22;
+var wall23;
+var wall24;
+var wall25;
+var wall26;
+var wall27;
+var wall28;
+var wall29;
+var wall30;
+
+
 var mySound;
-// var p = {x:20,y:20, 'black', w:20,h:20};
+
 
 
 //This makes a call to creates the board and pieces
@@ -39,10 +68,40 @@ function startGame() {
 //                      (width, heigth, color, x, y)
     myGamePiece = new component(20, 20, "red", 0, 0);
     myGate = new component(20, 20, "black", 480, 280);
-    wall3 = new component(200, 5, "purple", 0, 21);
+    wall3 = new component(50, 5, "purple", 0, 21);
     wall2 = new component(5, 200 , "pink", 200, 21);
     wall1 = new component(5, 200, "blue", 400, 25);
     wall4 = new component(200, 5, "grey", 200, 220);
+    wall5 = new component(200, 5, "#8DB3C7", 400, 21 );
+    wall6 = new component(5, 20, "#8DB3C9", 231, 21);
+    wall7 = new component(50,5, "yellow", 231, 40);
+    wall8 = new component(70, 5, "green", 205, 70);
+    wall9 = new component(5, 200, "blue", 50, 21);
+
+    wall10 = new component(100, 5, "grey", 55, 50);
+
+    wall11 = new component(200, 5, "grey", 200, 220);
+    wall12 = new component(200, 5, "grey", 200, 220);
+    wall13 = new component(200, 5, "grey", 200, 220);
+    wall14 = new component(200, 5, "grey", 200, 220);
+    wall15 = new component(200, 5, "grey", 200, 220);
+    wall16 = new component(200, 5, "grey", 200, 220);
+    wall17 = new component(200, 5, "grey", 200, 220);
+    wall18 = new component(200, 5, "grey", 200, 220);
+    wall19 = new component(200, 5, "grey", 200, 220);
+    wall20 = new component(200, 5, "grey", 200, 220);
+    wall21 = new component(200, 5, "grey", 200, 220);
+    wall22 = new component(200, 5, "grey", 200, 220);
+    wall23 = new component(200, 5, "grey", 200, 220);
+    wall24 = new component(200, 5, "grey", 200, 220);
+    wall25 = new component(200, 5, "grey", 200, 220);
+    wall26 = new component(200, 5, "grey", 200, 220);
+    wall27 = new component(200, 5, "grey", 200, 220);
+    wall28 = new component(200, 5, "grey", 200, 220);
+    wall29 = new component(200, 5, "grey", 200, 220);
+    wall30 = new component(200, 5, "grey", 200, 220);
+
+
     mySound = new sound("beam.mp3");
 
     myGameArea.start();
@@ -54,8 +113,8 @@ function startGame() {
 var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
-        this.canvas.width = 1000;
-        this.canvas.height = 800;
+        this.canvas.width = 500;
+        this.canvas.height = 300;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.interval = setInterval(updateGameArea, 20);
@@ -82,9 +141,6 @@ function component(width, height, color, x, y) {
     this.speedY = 0;
     this.x = x;
     this.y = y;
-    this.gravity = 0.1;
-    this.gravitySpeed = 0;
-    this.bounce = .0;
     this.update = function(){
         ctx = myGameArea.context;
         ctx.fillStyle = color;
@@ -119,7 +175,7 @@ this.hitBottom = () => {
   var rockbottom = myGameArea.canvas.height - this.height;
     if ( this.y > rockbottom) {
         this.y = rockbottom;
-        this.gravitySpeed = -(this.gravitySpeed * this.bounce);
+
     }
 
 }
@@ -176,26 +232,13 @@ this.hitLeft = () => {
     (mytop > otherbottom) ||
     (myright < otherleft) ||
     (myleft > otherright)) {
-      this.gravitySpeed = -(this.gravitySpeed * this.bounce);
+
       }
 
 
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // this updates the board, which is just a refresh rate. This also affects piece movement
 function updateGameArea() {
@@ -215,6 +258,35 @@ function updateGameArea() {
         wall2.update();
         wall3.update();
         wall4.update();
+
+        wall5.update();
+        wall6.update();
+        wall7.update();
+        wall8.update();
+        wall9.update();
+        wall10.update();
+        wall11.update();
+        wall12.update();
+        wall13.update();
+        wall14.update();
+        wall15.update();
+        wall16.update();
+        wall17.update();
+        wall18.update();
+        wall19.update();
+        wall20.update();
+        wall21.update();
+        wall22.update();
+        wall23.update();
+        wall24.update();
+        wall25.update();
+        wall26.update();
+        wall27.update();
+        wall28.update();
+        wall29.update();
+        wall30.update();
+
+
         myGamePiece.newPos();
         myGamePiece.speedX = 0;
         myGamePiece.speedY = 0;
