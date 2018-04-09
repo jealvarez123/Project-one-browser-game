@@ -79,13 +79,13 @@ function startGame() {
     wall7 = new component(50,5, "yellow", 231, 40);
     wall8 = new component(70, 5, "green", 205, 70);
     wall9 = new component(5, 200, "blue", 50, 21);
+    wall10 = new component(60, 5, "grey", 55, 50);
+    wall11 = new component(5, 25, "green", 80, 0);
+    wall12 = new component(5, 25, "grey", 110, 25);
+    wall13 = new component(5, 100, "grey", 140, 0);
 
-    wall10 = new component(100, 5, "grey", 55, 50);
-
-    wall11 = new component(200, 5, "grey", 200, 220);
-    wall12 = new component(200, 5, "grey", 200, 220);
-    wall13 = new component(200, 5, "grey", 200, 220);
     wall14 = new component(200, 5, "grey", 200, 220);
+
     wall15 = new component(200, 5, "grey", 200, 220);
     wall16 = new component(200, 5, "grey", 200, 220);
     wall17 = new component(200, 5, "grey", 200, 220);
@@ -238,17 +238,39 @@ this.hitLeft = () => {
     var otherright = otherobj.x + (otherobj.width);
     var othertop = otherobj.y;
     var otherbottom = otherobj.y + (otherobj.height);
-    var crash = true;
-    if ((mybottom < othertop) ||
+    // var crash = true;
+    if ((mybottom < othertop) &&
     (mytop > otherbottom) ||
-    (myright < otherleft) ||
+    (myright < otherleft) &&
     (myleft > otherright)) {
-      crash = false;
+       // crash = false;
       }
-    return crash;
+    // return crash;
+
 
   }
 
+
+  const collision = () => {
+      return overLapOnX() && overLapOnY();
+  }
+
+  const overLapOnX = () => {
+      return object1.x < object2.x + object2.width && object1.x + object1.width  > object2.x
+  }
+
+  const overLapOnY = () => {
+      object1.y < object2.y + object2.height && object1.y + object1.height > object2.y
+  }
+
+
+  const movePlayer = () => {
+      if(collision()){
+          return;
+      }
+
+      player.x += 1;
+  }
 
 }
 
@@ -263,7 +285,7 @@ function updateGameArea() {
 
         startGame();
       } else if(myGamePiece.crashWithwall(wall1)) {
-        console.log("collision");
+
 
 
 startGame();
@@ -273,36 +295,36 @@ startGame();
         myGamePiece.update();
         myGate.update();
         wall1.update();
-        // wall2.update();
-        // wall3.update();
-        // wall4.update();
-        //
-        // wall5.update();
-        // wall6.update();
-        // wall7.update();
-        // wall8.update();
-        // wall9.update();
-        // wall10.update();
-        // wall11.update();
-        // wall12.update();
-        // wall13.update();
-        // wall14.update();
-        // wall15.update();
-        // wall16.update();
-        // wall17.update();
-        // wall18.update();
-        // wall19.update();
-        // wall20.update();
-        // wall21.update();
-        // wall22.update();
-        // wall23.update();
-        // wall24.update();
-        // wall25.update();
-        // wall26.update();
-        // wall27.update();
-        // wall28.update();
-        // wall29.update();
-        // wall30.update();
+        wall2.update();
+        wall3.update();
+        wall4.update();
+
+        wall5.update();
+        wall6.update();
+        wall7.update();
+        wall8.update();
+        wall9.update();
+        wall10.update();
+        wall11.update();
+        wall12.update();
+        wall13.update();
+        wall14.update();
+        wall15.update();
+        wall16.update();
+        wall17.update();
+        wall18.update();
+        wall19.update();
+        wall20.update();
+        wall21.update();
+        wall22.update();
+        wall23.update();
+        wall24.update();
+        wall25.update();
+        wall26.update();
+        wall27.update();
+        wall28.update();
+        wall29.update();
+        wall30.update();
 
 
         myScore.update();
