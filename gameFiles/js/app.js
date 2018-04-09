@@ -25,6 +25,8 @@ var myGamePiece;
 
 var myGate;
 
+var myScore ;
+
 var wall1;
 var wall2;
 var wall3;
@@ -68,9 +70,9 @@ function startGame() {
 //                      (width, heigth, color, x, y)
     myGamePiece = new component(20, 20, "red", 0, 0);
     myGate = new component(20, 20, "black", 480, 280);
+    wall1 = new component(5, 200, "blue", 400, 25);
     wall3 = new component(50, 5, "purple", 0, 21);
     wall2 = new component(5, 200 , "pink", 200, 21);
-    wall1 = new component(5, 200, "blue", 400, 25);
     wall4 = new component(200, 5, "grey", 200, 220);
     wall5 = new component(200, 5, "#8DB3C7", 400, 21 );
     wall6 = new component(5, 20, "#8DB3C9", 231, 21);
@@ -104,6 +106,8 @@ function startGame() {
 
     mySound = new sound("beam.mp3");
 
+    myScore = new component("10px", "Consolas", "black", 450, 20, "text");
+
     myGameArea.start();
 }
 
@@ -134,7 +138,8 @@ var myGameArea = {
 }
 
 // this creates the pieces
-function component(width, height, color, x, y) {
+function component(width, height, color, x, y, type) {
+    this.type = type
     this.width = width;
     this.height = height;
     this.speedX = 0;
@@ -143,8 +148,14 @@ function component(width, height, color, x, y) {
     this.y = y;
     this.update = function(){
         ctx = myGameArea.context;
+        if (this.type == "text") {
+      ctx.font = this.width + " " + this.height;
+      ctx.fillStyle = color;
+      ctx.fillText(this.text, this.x, this.y);
+    } else {
         ctx.fillStyle = color;
         ctx.fillRect(this.x, this.y, this.width, this.height);
+      }
     }
 
 
@@ -232,61 +243,69 @@ this.hitLeft = () => {
     (mytop > otherbottom) ||
     (myright < otherleft) ||
     (myleft > otherright)) {
-
+      crash = false;
       }
-
+    return crash;
 
   }
+
 
 }
 
 // this updates the board, which is just a refresh rate. This also affects piece movement
+var currentScore = 0;
 function updateGameArea() {
+  myScore.text="SCORE: " + currentScore;
   if (myGamePiece.crashWith(myGate)) {
         mySound.play();
         myGameArea.stop();
+        currentScore += 1;
+
         startGame();
+      } else if(myGamePiece.crashWithwall(wall1)) {
+        console.log("collision");
 
-    } else if(myGamePiece.crashWithwall(wall1)) {
 
-
-    } else {
+startGame();
+      } else {
         myGameArea.clear();
+
         myGamePiece.update();
         myGate.update();
         wall1.update();
-        wall2.update();
-        wall3.update();
-        wall4.update();
+        // wall2.update();
+        // wall3.update();
+        // wall4.update();
+        //
+        // wall5.update();
+        // wall6.update();
+        // wall7.update();
+        // wall8.update();
+        // wall9.update();
+        // wall10.update();
+        // wall11.update();
+        // wall12.update();
+        // wall13.update();
+        // wall14.update();
+        // wall15.update();
+        // wall16.update();
+        // wall17.update();
+        // wall18.update();
+        // wall19.update();
+        // wall20.update();
+        // wall21.update();
+        // wall22.update();
+        // wall23.update();
+        // wall24.update();
+        // wall25.update();
+        // wall26.update();
+        // wall27.update();
+        // wall28.update();
+        // wall29.update();
+        // wall30.update();
 
-        wall5.update();
-        wall6.update();
-        wall7.update();
-        wall8.update();
-        wall9.update();
-        wall10.update();
-        wall11.update();
-        wall12.update();
-        wall13.update();
-        wall14.update();
-        wall15.update();
-        wall16.update();
-        wall17.update();
-        wall18.update();
-        wall19.update();
-        wall20.update();
-        wall21.update();
-        wall22.update();
-        wall23.update();
-        wall24.update();
-        wall25.update();
-        wall26.update();
-        wall27.update();
-        wall28.update();
-        wall29.update();
-        wall30.update();
 
-
+        myScore.update();
         myGamePiece.newPos();
         myGamePiece.speedX = 0;
         myGamePiece.speedY = 0;
