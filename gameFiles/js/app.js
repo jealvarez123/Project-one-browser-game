@@ -3,7 +3,7 @@ console.log('Can I kick it?');
 // var myBackground;
 var myGamePiece;
 var myGate;
-var myScore ;
+var myBadguy;
 var wall1;
 var wall2;
 var wall3;
@@ -36,6 +36,7 @@ var wall29;
 var wall30;
 var mySound;
 var mySoundStep;
+let walls;
 //This makes a call to creates the board and pieces
 function startGame() {
   //                      (width, heigth, color, x, y)
@@ -43,9 +44,10 @@ function startGame() {
 
   myGamePiece = new component(20, 20, "guy.png", 0, 0,"image");
   myGate = new component(20, 20, "door.png", 480, 280,"image");
+
   wall1 = new component(5, 200, "blue", 400, 25);
-  wall3 = new component(50, 5, "purple", 0, 21);
   wall2 = new component(5, 200 , "pink", 200, 21);
+  wall3 = new component(50, 5, "purple", 0, 21);
   wall4 = new component(200, 5, "grey", 200, 220);
   wall5 = new component(200, 5, "#8DB3C7", 400, 21 );
   wall6 = new component(5, 20, "#8DB3C9", 231, 21);
@@ -75,6 +77,8 @@ function startGame() {
   wall28 = new component(200, 5, "grey", 200, 220);
   wall29 = new component(200, 5, "grey", 200, 220);
   wall30 = new component(200, 5, "grey", 200, 220);
+  walls = [wall1, wall2, wall3]
+
   mySound = new sound("door.mp3");
   mySoundStep = new steps("walk.mp3");
   myScore = new component("10px", "Consolas", "black", 450, 20, "text");
@@ -198,23 +202,33 @@ function component(width, height, color, x, y, type) {
       }
       return crash;
     }
-    this.crashWithWall = function(otherobj) {
+
+    this.crashWithWall = function() {
       var myleft = this.x;
       var myright = this.x + (this.width);
       var mytop = this.y;
       var mybottom = this.y + (this.height);
-      var otherleft = otherobj.x;
-      var otherright = otherobj.x + (otherobj.width);
-      var othertop = otherobj.y;
-      var otherbottom = otherobj.y + (otherobj.height);
-      var crash = true;
-      if ((mybottom < othertop) ||
-      (mytop > otherbottom) ||
-      (myright < otherleft) ||
-      (myleft > otherright)) {
-        crash = false;
+      for (var i = 0; i < walls.length; i++) {
+        console.log(walls[i]);
+
+        var otherleft =   walls[i].x;
+        var otherright =   walls[i].x + (  walls[i].width);
+        var othertop =   walls[i].y;
+        var otherbottom =   walls[i].y + (  walls[i].height);
+        // var crash = true;
+        if ((mybottom < othertop) &&
+        (mytop > otherbottom) &&
+        (myright < otherleft) &&
+        (myleft > otherright)){
+          console.log('crash');
+          return true;
+        }
       }
-      return crash;
+        return false;
+
+        // crash = false;
+
+      // return crash;
     }
 
 
@@ -253,10 +267,11 @@ function component(width, height, color, x, y, type) {
       currentScore += 1;
       startGame();
 
-    } else if(myGamePiece.crashWithWall(wall1)) {
+    }
+    else if(myGamePiece.crashWithWall()) {
       mySound.play();
       myGameArea.stop();
-      currentScore += 1;
+      // currentScore += 1;
       startGame();
 
     } else {
@@ -299,18 +314,21 @@ function component(width, height, color, x, y, type) {
       myGamePiece.newPos();
       myGamePiece.speedX = 0;
       myGamePiece.speedY = 0;
-      if (myGameArea.key && myGameArea.key == 65) {myGamePiece.speedX = -2;
+
+      if (myGameArea.key && myGameArea.key == 65) {myGamePiece.speedX = -6;
           mySoundStep.play();
-        }
-      if (myGameArea.key && myGameArea.key == 68) {myGamePiece.speedX = 2;
+          console.log("rightKey");
+       }
+      if (myGameArea.key && myGameArea.key == 68) {myGamePiece.speedX = 6;
           mySoundStep.play();
        }
-      if (myGameArea.key && myGameArea.key == 87) {myGamePiece.speedY = -2;
+      if (myGameArea.key && myGameArea.key == 87) {myGamePiece.speedY = -6;
           mySoundStep.play();
+          console.log("rightdown");
         }
 
 
-      if (myGameArea.key && myGameArea.key == 83) {myGamePiece.speedY = 2;
+      if (myGameArea.key && myGameArea.key == 83) {myGamePiece.speedY = 6;
           mySoundStep.play();
         }
     }
