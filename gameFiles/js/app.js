@@ -25,17 +25,21 @@ var wall19;
 var wall20;
 var wall21;
 var wall22;
-// var wall23;
-// var wall24;
-// var wall25;
+var wall23;
+var wall24;
+var wall25;
 // var wall26;
 // var wall27;
 // var wall28;
 // var wall29;
 // var wall30;
 var mySound;
+var mySoundTrap;
 var mySoundStep;
 var mySoundDead;
+var mySoundDragon;
+var mySoundCobra;
+var mySoundFireball;
 var myBackgroundSound;
 let walls;
 //This makes a call to creates the board and pieces
@@ -51,7 +55,7 @@ function startGame() {
   wall1 = new component(120, 120, "border.png",0, 21, 'image');
   wall2 = new component(100, 100, "lavafall.gif", 10, 30, 'image');
 
-  //second box
+  // second box
   wall3 = new component(110, 120, "border.png", 149, 0, 'image');
   wall4 = new component(90, 100, "lavafall.gif", 159, 10, 'image');
 
@@ -70,14 +74,14 @@ function startGame() {
 //sxth box
   wall9 = new component(105, 120, "border.png", 370, 150, 'image');
   wall10 = new component(85, 100, "lavafall.gif", 380, 160, 'image');
-
-  wall11 = new component(20, 20, "badguyblue.png", 150, 130, 'image');
+// Blue wizard
+ wall11 = new component(20, 20, "badguyblue.png", 150, 130, 'image');
 
   wall12 = new component(26, 26, "dragon.png", 20, 150, 'image');
 
   wall13 = new component(20, 20, "necro.png", 450, 130, 'image');
 
-  wall14 = new component(20, 20, "eyeball.png", 270, 275, 'image');
+  wall14 = new component(20, 20, "chest.png", 270, 275, 'image');
 
   wall15 = new component(26, 26, "bonedragon.png", 450, 100, 'image');
 
@@ -90,9 +94,11 @@ function startGame() {
   wall19 = new component(22, 26, "bosstop.png", 50, 205, 'image');
   wall22 = new component(22, 26, "bossfeet.png", 52, 230, 'image');
 
-  // wall23 = new component(200, 5, "grey", 200, 220);
-  // wall24 = new component(200, 5, "grey", 200, 220);
-  // wall25 = new component(200, 5, "grey", 200, 220);
+  wall23 = new component(10, 13, "flame.png", 257, 80, 'image');
+
+  wall24 = new component(10, 13, "flame.png", 290, 40, 'image');
+
+  wall25 = new component(10, 13, "flame.png", 258, 0, 'image');
   // wall26 = new component(200, 5, "grey", 200, 220);
   // wall27 = new component(200, 5, "grey", 200, 220);
   // wall28 = new component(200, 5, "grey", 200, 220);
@@ -100,8 +106,12 @@ function startGame() {
   // wall30 = new component(200, 5, "grey", 200, 220);
 
   mySound = new sound("door.mp3");
+  mySoundCobra = new cobra("cobra.mp3");
+  mySoundTrap = new trap("trap.mp3");
   mySoundStep = new steps("walk.mp3");
   mySoundDead = new dead("dead.mp3");
+  mySoundDragon = new dead("dragon.mp3");
+  mySoundFireball = new fireball("fireball.mp3");
   myBackgroundSound = new background("background.mp3");
   myScore = new component("10px", "Consolas", "black", 450, 20, "text");
   myGameArea.start();
@@ -121,10 +131,7 @@ var myGameArea = {
     window.addEventListener('keyup', function (e) {
       myGameArea.key = false;
     })
-    // window.removeEventListener('keydown', function (e) {
-      // this.crashWith()
 
-    })
   },
   clear : function() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -259,13 +266,24 @@ function  clearmove() {
     myBackgroundSound.play()
     myScore.text="SCORE: " + currentScore;
     if (myGamePiece.crashWith(myGate)) {
-
-      mySound.play();
       myGameArea.stop();
 
+      window.removeEventListener('keyup', function (e) {
+        myGameArea.stop()
+
+        this.crashWith(myGate)
+      })
+      window.removeEventListener('keydown', function (e) {
+        this.crashWith(myGate)
+      })
+
+      mySound.play();
+      myGameArea.stop()
+
       currentScore += 1;
-      startGame();
       window.confirm("Congatulations! You've escaped. ")
+
+      startGame();
 
     }
     else if(myGamePiece.crashWithWall(wall1)) {
@@ -326,7 +344,7 @@ function  clearmove() {
     }
     else if(myGamePiece.crashWithWall(wall8)) {
 
-      mySoundDead.play();
+      mySoundCobra.play();
       myGameArea.stop();
       // currentScore += 1;
       startGame();
@@ -356,9 +374,10 @@ function  clearmove() {
       startGame();
 
     }
+    //dragon
     else if(myGamePiece.crashWithWall(wall12)) {
 
-      mySoundDead.play();
+      mySoundDragon.play();
       myGameArea.stop();
       // currentScore += 1;
       startGame();
@@ -374,7 +393,7 @@ function  clearmove() {
     }
     else if(myGamePiece.crashWithWall(wall14)) {
 
-      mySoundDead.play();
+      mySoundTrap.play();
       myGameArea.stop();
       // currentScore += 1;
       startGame();
@@ -443,30 +462,33 @@ function  clearmove() {
       startGame();
 
     }
-    // else if(myGamePiece.crashWithWall(wall23)) {
-    //
-    //   mySoundDead.play();
-    //   myGameArea.stop();
-    //   // currentScore += 1;
-    //   startGame();
-    //
-    // }
-    // else if(myGamePiece.crashWithWall(wall24)) {
-    //
-    //   mySoundDead.play();
-    //   myGameArea.stop();
-    //   // currentScore += 1;
-    //   startGame();
-    //
-    // }
-    // else if(myGamePiece.crashWithWall(wall25)) {
-    //
-    //   mySoundDead.play();
-    //   myGameArea.stop();
-    //   // currentScore += 1;
-    //   startGame();
-    //
-    // }
+    else if(myGamePiece.crashWithWall(wall23)) {
+
+      mySoundFireball.play();
+      mySoundFireball.play();
+      myGameArea.stop();
+      // currentScore += 1;
+      startGame();
+
+    }
+    else if(myGamePiece.crashWithWall(wall24)) {
+
+      mySoundFireball.play();
+      mySoundFireball.play();
+      myGameArea.stop();
+      // currentScore += 1;
+      startGame();
+
+    }
+    else if(myGamePiece.crashWithWall(wall25)) {
+
+      mySoundFireball.play();
+      mySoundFireball.play();
+      myGameArea.stop();
+      // currentScore += 1;
+      startGame();
+
+    }
     // else if(myGamePiece.crashWithWall(wall26)) {
     //
     //   mySoundDead.play();
@@ -534,9 +556,9 @@ function  clearmove() {
       wall20.update();
       wall21.update();
       wall22.update();
-      // wall23.update();
-      // wall24.update();
-      // wall25.update();
+      wall23.update();
+      wall24.update();
+      wall25.update();
       // wall26.update();
       // wall27.update();
       // wall28.update();
@@ -574,6 +596,20 @@ function  clearmove() {
     document.body.appendChild(this.sound);
     this.play = function(){
       this.sound.play();
+    }
+    this.stop = function(){
+      this.sound.pause();
+    }
+  }
+  function trap(src) {
+    this.trap = document.createElement("audio");
+    this.trap.src = src;
+    this.trap.setAttribute("preload", "auto");
+    this.trap.setAttribute("controls", "none");
+    this.trap.style.display = "none";
+    document.body.appendChild(this.trap);
+    this.play = function(){
+      this.trap.play();
     }
     this.stop = function(){
       this.sound.pause();
@@ -619,5 +655,47 @@ function  clearmove() {
     }
     this.stop = function(){
       this.background.pause();
+    }
+  }
+  function dragon(src) {
+    this.dragon = document.createElement("audio");
+    this.dragon.src = src;
+    this.dragon.setAttribute("preload", "auto");
+    this.dragon.setAttribute("controls", "none");
+    this.dragon.style.display = "none";
+    document.body.appendChild(this.dragon);
+    this.play = function(){
+      this.dragon.play();
+    }
+    this.stop = function(){
+      this.dragon.pause();
+    }
+  }
+  function cobra(src) {
+    this.cobra = document.createElement("audio");
+    this.cobra.src = src;
+    this.cobra.setAttribute("preload", "auto");
+    this.cobra.setAttribute("controls", "none");
+    this.cobra.style.display = "none";
+    document.body.appendChild(this.cobra);
+    this.play = function(){
+      this.cobra.play();
+    }
+    this.stop = function(){
+      this.cobra.pause();
+    }
+  }
+  function fireball(src) {
+    this.fireball = document.createElement("audio");
+    this.fireball.src = src;
+    this.fireball.setAttribute("preload", "auto");
+    this.fireball.setAttribute("controls", "none");
+    this.fireball.style.display = "none";
+    document.body.appendChild(this.fireball);
+    this.play = function(){
+      this.fireball.play();
+    }
+    this.stop = function(){
+      this.fireball.pause();
     }
   }
