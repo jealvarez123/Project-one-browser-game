@@ -25,60 +25,84 @@ var wall19;
 var wall20;
 var wall21;
 var wall22;
-var wall23;
-var wall24;
-var wall25;
-var wall26;
-var wall27;
-var wall28;
-var wall29;
-var wall30;
+// var wall23;
+// var wall24;
+// var wall25;
+// var wall26;
+// var wall27;
+// var wall28;
+// var wall29;
+// var wall30;
 var mySound;
 var mySoundStep;
 var mySoundDead;
+var myBackgroundSound;
 let walls;
 //This makes a call to creates the board and pieces
+function GameOver (){
+  var myGamePiece;
+}
 function startGame() {
   //                      (width, heigth, color, x, y)
   myGamePiece = new component(20, 20, "guy.png", 0, 0,"image");
-  myGate = new component(20, 20, "door.png", 480, 280,"image");
+  myGate = new component(25, 45, "doorway.png", 472, 270,"image");
 
-  wall1 = new component(5, 200, "blue", 400, 25);
-  wall2 = new component(5, 200 , "pink", 200, 21);
-  wall3 = new component(50, 5, "purple", 0, 21);
-  wall4 = new component(200, 5, "grey", 200, 220);
-  wall5 = new component(200, 5, "#8DB3C7", 400, 21 );
-  wall6 = new component(5, 20, "#8DB3C9", 235, 21);
-  wall7 = new component(50,5, "yellow", 235, 40);
-  wall8 = new component(70, 5, "green", 205, 70);
-  wall9 = new component(5, 200, "blue", 50, 21);
-  wall10 = new component(60, 5, "brown", 55, 54);
-  wall11 = new component(5, 25, "green", 85, 0);
-  wall12 = new component(5, 29, "grey", 115, 30);
-  wall13 = new component(5, 80, "yellow", 149, 0);
-  wall14 = new component(5, 200, "red", 22, 50);
-  wall15 = new component(80, 5, "grey", 50, 220);
-  wall16 = new component(90, 5, "grey", 0, 250);
-  wall17 = new component(60, 5, "grey", 114, 86);
-  wall18 = new component(5, 115 , "purple", 80, 80);
-  wall19 = new component(30, 5, "white", 170, 21);
+// first box
+  wall1 = new component(120, 120, "border.png",0, 21, 'image');
+  wall2 = new component(100, 100, "lavafall.gif", 10, 30, 'image');
 
-  wall20 = new component(100, 100, "grey", 250, 100);
+  //second box
+  wall3 = new component(110, 120, "border.png", 149, 0, 'image');
+  wall4 = new component(90, 100, "lavafall.gif", 159, 10, 'image');
 
-  wall21 = new component(200, 5, "grey", 200, 280);
-  wall22 = new component(200, 5, "grey", 200, 220);
-  wall23 = new component(200, 5, "grey", 200, 220);
-  wall24 = new component(200, 5, "grey", 200, 220);
-  wall25 = new component(200, 5, "grey", 200, 220);
-  wall26 = new component(200, 5, "grey", 200, 220);
-  wall27 = new component(200, 5, "grey", 200, 220);
-  wall28 = new component(200, 5, "grey", 200, 220);
-  wall29 = new component(200, 5, "grey", 200, 220);
-  wall30 = new component(200, 5, "grey", 200, 220);
+  // third box
+  wall5 = new component(110, 95, "border.png", 300, 25, 'image');
+  wall6 = new component(90, 75, "lavafall.gif", 310, 35, 'image');
+
+//fourth box
+  wall7 = new component(110, 100, "border.png", 80, 170, 'image');
+  wall8 = new component(90, 80, "lavafall.gif", 90, 180, 'image');
+
+// fifth box
+  wall20 = new component(120, 120, "border.png", 220, 150, 'image');
+  wall21 = new component(100, 100, "lavafall.gif", 230, 160, 'image');
+
+//sxth box
+  wall9 = new component(105, 120, "border.png", 370, 150, 'image');
+  wall10 = new component(85, 100, "lavafall.gif", 380, 160, 'image');
+
+  wall11 = new component(20, 20, "badguyblue.png", 150, 130, 'image');
+
+  wall12 = new component(26, 26, "dragon.png", 20, 150, 'image');
+
+  wall13 = new component(20, 20, "necro.png", 450, 130, 'image');
+
+  wall14 = new component(20, 20, "eyeball.png", 270, 275, 'image');
+
+  wall15 = new component(26, 26, "bonedragon.png", 450, 100, 'image');
+
+  wall16 = new component(20, 20, "bonefist.png", 470, 50, 'image');
+
+  wall17 = new component(22, 26, "trap.png", 475, 240, 'image');
+
+  wall18 = new component(22, 26, "cobra.png", 285, 124, 'image');
+
+  wall19 = new component(22, 26, "bosstop.png", 50, 205, 'image');
+  wall22 = new component(22, 26, "bossfeet.png", 52, 230, 'image');
+
+  // wall23 = new component(200, 5, "grey", 200, 220);
+  // wall24 = new component(200, 5, "grey", 200, 220);
+  // wall25 = new component(200, 5, "grey", 200, 220);
+  // wall26 = new component(200, 5, "grey", 200, 220);
+  // wall27 = new component(200, 5, "grey", 200, 220);
+  // wall28 = new component(200, 5, "grey", 200, 220);
+  // wall29 = new component(200, 5, "grey", 200, 220);
+  // wall30 = new component(200, 5, "grey", 200, 220);
 
   mySound = new sound("door.mp3");
   mySoundStep = new steps("walk.mp3");
   mySoundDead = new dead("dead.mp3");
+  myBackgroundSound = new background("background.mp3");
   myScore = new component("10px", "Consolas", "black", 450, 20, "text");
   myGameArea.start();
 }
@@ -96,6 +120,10 @@ var myGameArea = {
     })
     window.addEventListener('keyup', function (e) {
       myGameArea.key = false;
+    })
+    // window.removeEventListener('keydown', function (e) {
+      // this.crashWith()
+
     })
   },
   clear : function() {
@@ -220,15 +248,24 @@ function component(width, height, color, x, y, type) {
     }
   }
 
+function  clearmove() {
+    myGamePiece.speedX = 0;
+    myGamePiece.speedy = 0;
+
+}
   // this updates the board, which is just a refresh rate. This also affects piece movement
   var currentScore = 0;
   function updateGameArea() {
+    myBackgroundSound.play()
     myScore.text="SCORE: " + currentScore;
     if (myGamePiece.crashWith(myGate)) {
+
       mySound.play();
       myGameArea.stop();
+
       currentScore += 1;
       startGame();
+      window.confirm("Congatulations! You've escaped. ")
 
     }
     else if(myGamePiece.crashWithWall(wall1)) {
@@ -384,7 +421,6 @@ function component(width, height, color, x, y, type) {
 
     }
     else if(myGamePiece.crashWithWall(wall20)) {
-
       mySoundDead.play();
       myGameArea.stop();
       // currentScore += 1;
@@ -407,70 +443,70 @@ function component(width, height, color, x, y, type) {
       startGame();
 
     }
-    else if(myGamePiece.crashWithWall(wall23)) {
-
-      mySoundDead.play();
-      myGameArea.stop();
-      // currentScore += 1;
-      startGame();
-
-    }
-    else if(myGamePiece.crashWithWall(wall24)) {
-
-      mySoundDead.play();
-      myGameArea.stop();
-      // currentScore += 1;
-      startGame();
-
-    }
-    else if(myGamePiece.crashWithWall(wall25)) {
-
-      mySoundDead.play();
-      myGameArea.stop();
-      // currentScore += 1;
-      startGame();
-
-    }
-    else if(myGamePiece.crashWithWall(wall26)) {
-
-      mySoundDead.play();
-      myGameArea.stop();
-      // currentScore += 1;
-      startGame();
-
-    }
-    else if(myGamePiece.crashWithWall(wall27)) {
-
-      mySoundDead.play();
-      myGameArea.stop();
-      // currentScore += 1;
-      startGame();
-
-    }
-    else if(myGamePiece.crashWithWall(wall28)) {
-
-      mySoundDead.play();
-      myGameArea.stop();
-      // currentScore += 1;
-      startGame();
-
-    }
-    else if(myGamePiece.crashWithWall(wall29)) {
-
-      mySoundDead.play();
-      myGameArea.stop();
-      // currentScore += 1;
-      startGame();
-
-    }
-    else if(myGamePiece.crashWithWall(wall30)) {
-
-      mySoundDead.play();
-      myGameArea.stop();
-      // currentScore += 1;
-      startGame();
-
-    }
+    // else if(myGamePiece.crashWithWall(wall23)) {
+    //
+    //   mySoundDead.play();
+    //   myGameArea.stop();
+    //   // currentScore += 1;
+    //   startGame();
+    //
+    // }
+    // else if(myGamePiece.crashWithWall(wall24)) {
+    //
+    //   mySoundDead.play();
+    //   myGameArea.stop();
+    //   // currentScore += 1;
+    //   startGame();
+    //
+    // }
+    // else if(myGamePiece.crashWithWall(wall25)) {
+    //
+    //   mySoundDead.play();
+    //   myGameArea.stop();
+    //   // currentScore += 1;
+    //   startGame();
+    //
+    // }
+    // else if(myGamePiece.crashWithWall(wall26)) {
+    //
+    //   mySoundDead.play();
+    //   myGameArea.stop();
+    //   // currentScore += 1;
+    //   startGame();
+    //
+    // }
+    // else if(myGamePiece.crashWithWall(wall27)) {
+    //
+    //   mySoundDead.play();
+    //   myGameArea.stop();
+    //   // currentScore += 1;
+    //   startGame();
+    //
+    // }
+    // else if(myGamePiece.crashWithWall(wall28)) {
+    //
+    //   mySoundDead.play();
+    //   myGameArea.stop();
+    //   // currentScore += 1;
+    //   startGame();
+    //
+    // }
+    // else if(myGamePiece.crashWithWall(wall29)) {
+    //
+    //   mySoundDead.play();
+    //   myGameArea.stop();
+    //   // currentScore += 1;
+    //   startGame();
+    //
+    // }
+    // else if(myGamePiece.crashWithWall(wall30)) {
+    //
+    //   mySoundDead.play();
+    //   myGameArea.stop();
+    //   // currentScore += 1;
+    //   startGame();
+    //
+    // }
 
     else {
       myGameArea.clear();
@@ -498,33 +534,33 @@ function component(width, height, color, x, y, type) {
       wall20.update();
       wall21.update();
       wall22.update();
-      wall23.update();
-      wall24.update();
-      wall25.update();
-      wall26.update();
-      wall27.update();
-      wall28.update();
-      wall29.update();
-      wall30.update();
+      // wall23.update();
+      // wall24.update();
+      // wall25.update();
+      // wall26.update();
+      // wall27.update();
+      // wall28.update();
+      // wall29.update();
+      // wall30.update();
       myScore.update();
       myGamePiece.newPos();
       myGamePiece.speedX = 0;
       myGamePiece.speedY = 0;
 
-      if (myGameArea.key && myGameArea.key == 65) {myGamePiece.speedX = -1;
+      if (myGameArea.key && myGameArea.key == 65) {myGamePiece.speedX = -2;
           mySoundStep.play();
-          console.log("rightKey");
+
        }
-      if (myGameArea.key && myGameArea.key == 68) {myGamePiece.speedX = 1;
+      if (myGameArea.key && myGameArea.key == 68) {myGamePiece.speedX = 2;
           mySoundStep.play();
        }
-      if (myGameArea.key && myGameArea.key == 87) {myGamePiece.speedY = -1;
+      if (myGameArea.key && myGameArea.key == 87) {myGamePiece.speedY = -2;
           mySoundStep.play();
-          console.log("rightdown");
+
         }
 
 
-      if (myGameArea.key && myGameArea.key == 83) {myGamePiece.speedY = 1;
+      if (myGameArea.key && myGameArea.key == 83) {myGamePiece.speedY = 2;
           mySoundStep.play();
         }
     }
@@ -569,5 +605,19 @@ function component(width, height, color, x, y, type) {
     }
     this.stop = function(){
       this.dead.pause();
+    }
+  }
+  function background(src) {
+    this.background = document.createElement("audio");
+    this.background.src = src;
+    this.background.setAttribute("preload", "auto");
+    this.background.setAttribute("controls", "none");
+    this.background.style.display = "none";
+    document.body.appendChild(this.background);
+    this.play = function(){
+      this.background.play();
+    }
+    this.stop = function(){
+      this.background.pause();
     }
   }
