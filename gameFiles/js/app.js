@@ -48,38 +48,38 @@ function GameOver (){
 }
 function startGame() {
   //                      (width, heigth, color, x, y)
-  myGamePiece = new component(20, 20, "guy.png", 0, 0,"image");
-  myGate = new component(25, 45, "doorway.png", 472, 270,"image");
+  myGamePiece = new component(20, 20, "https://i.imgur.com/LoLi4XG.png", 0, 0,"image");
+  myGate = new component(25, 45, "https://i.imgur.com/kS4h0uE.png", 472, 270,"image");
 
 // first box
-  wall1 = new component(120, 120, "border.png",0, 21, 'image');
-  wall2 = new component(100, 100, "lavafall.gif", 10, 30, 'image');
+  wall1 = new component(120, 120, "https://i.imgur.com/qu4o6N2.png",0, 21, 'image');
+  wall2 = new component(100, 100, "https://i.imgur.com/WFxyNof.png", 10, 30, 'image');
 
   // second box
-  wall3 = new component(110, 120, "border.png", 149, 0, 'image');
-  wall4 = new component(90, 100, "lavafall.gif", 159, 10, 'image');
+  wall3 = new component(110, 120, "https://i.imgur.com/qu4o6N2.png", 149, 0, 'image');
+  wall4 = new component(90, 100, "https://i.imgur.com/WFxyNof.png", 159, 10, 'image');
 
   // third box
-  wall5 = new component(110, 95, "border.png", 300, 25, 'image');
-  wall6 = new component(90, 75, "lavafall.gif", 310, 35, 'image');
+  wall5 = new component(110, 95, "https://i.imgur.com/qu4o6N2.png", 300, 25, 'image');
+  wall6 = new component(90, 75, "https://i.imgur.com/WFxyNof.png", 310, 35, 'image');
 
 //fourth box
-  wall7 = new component(110, 100, "border.png", 80, 170, 'image');
-  wall8 = new component(90, 80, "lavafall.gif", 90, 180, 'image');
+  wall7 = new component(110, 100, "https://i.imgur.com/qu4o6N2.png", 80, 170, 'image');
+  wall8 = new component(90, 80, "https://i.imgur.com/WFxyNof.png", 90, 180, 'image');
 
 // fifth box
-  wall20 = new component(120, 120, "border.png", 220, 150, 'image');
-  wall21 = new component(100, 100, "lavafall.gif", 230, 160, 'image');
+  wall20 = new component(120, 120, "https://i.imgur.com/qu4o6N2.png", 220, 150, 'image');
+  wall21 = new component(100, 100, "https://i.imgur.com/WFxyNof.png", 230, 160, 'image');
 
 //sxth box
-  wall9 = new component(105, 120, "border.png", 370, 150, 'image');
-  wall10 = new component(85, 100, "lavafall.gif", 380, 160, 'image');
+  wall9 = new component(105, 120, "https://i.imgur.com/qu4o6N2.png", 370, 150, 'image');
+  wall10 = new component(85, 100, "https://i.imgur.com/WFxyNof.png", 380, 160, 'image');
 // Blue wizard
- wall11 = new component(20, 20, "badguyblue.png", 150, 130, 'image');
+  wall11 = new component(20, 20, "https://i.imgur.com/GyEnDVv.png", 150, 130, 'image');
 
-  wall12 = new component(26, 26, "dragon.png", 20, 150, 'image');
+  wall12 = new component(26, 26, "https://i.imgur.com/HlHwGxn.png", 20, 150, 'image');
 
-  wall13 = new component(20, 20, "necro.png", 450, 130, 'image');
+  wall13 = new component(20, 20, "https://i.imgur.com/J9z8u1W.png", 450, 130, 'image');
 
   wall14 = new component(20, 20, "chest.png", 270, 275, 'image');
 
@@ -187,9 +187,6 @@ function component(width, height, color, x, y, type) {
 
 
     }
-
-
-
     // this prevents the player from leaving the board
     this.hitTop = () => {
       var tiptop = this.height - 20;
@@ -255,11 +252,11 @@ function component(width, height, color, x, y, type) {
     }
   }
 
-function  clearmove() {
+  function  clearmove() {
     myGamePiece.speedX = 0;
     myGamePiece.speedy = 0;
 
-}
+  }
   // this updates the board, which is just a refresh rate. This also affects piece movement
   var currentScore = 0;
   function updateGameArea() {
@@ -570,21 +567,21 @@ function  clearmove() {
       myGamePiece.speedY = 0;
 
       if (myGameArea.key && myGameArea.key == 65) {myGamePiece.speedX = -2;
-          mySoundStep.play();
+        mySoundStep.play();
 
-       }
+      }
       if (myGameArea.key && myGameArea.key == 68) {myGamePiece.speedX = 2;
-          mySoundStep.play();
-       }
+        mySoundStep.play();
+      }
       if (myGameArea.key && myGameArea.key == 87) {myGamePiece.speedY = -2;
-          mySoundStep.play();
+        mySoundStep.play();
 
-        }
+      }
 
 
       if (myGameArea.key && myGameArea.key == 83) {myGamePiece.speedY = 2;
-          mySoundStep.play();
-        }
+        mySoundStep.play();
+      }
     }
   }
   function sound(src) {
