@@ -90,14 +90,15 @@ function startGame() {
   wall17 = new component(22, 26, "trap.png", 475, 240, 'image');
 
   wall18 = new component(22, 26, "cobra.png", 285, 124, 'image');
-//tall demon object//
+
   wall19 = new component(22, 26, "bosstop.png", 50, 205, 'image');
   wall22 = new component(22, 26, "bossfeet.png", 52, 230, 'image');
-///flame object///
-  wall23 = new component(10, 13, "flame.png", 257, 80, 'image');
-  wall24 = new component(10, 13, "flame.png", 290, 40, 'image');
-  wall25 = new component(10, 13, "flame.png", 258, 0, 'image');
 
+  wall23 = new component(10, 13, "flame.png", 257, 80, 'image');
+
+  wall24 = new component(10, 13, "flame.png", 290, 40, 'image');
+
+  wall25 = new component(10, 13, "flame.png", 258, 0, 'image');
   // wall26 = new component(200, 5, "grey", 200, 220);
   // wall27 = new component(200, 5, "grey", 200, 220);
   // wall28 = new component(200, 5, "grey", 200, 220);
@@ -481,7 +482,6 @@ function component(width, height, color, x, y, type) {
       mySoundFireball.play();
       mySoundFireball.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
