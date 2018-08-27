@@ -44,7 +44,7 @@ function GameOver (){
 function startGame() {
   //                      (width, heigth, color, x, y)
   myGamePiece = new component(20, 20, "https://i.imgur.com/LoLi4XG.png", 0, 0,"image");
-  myGate = new component(25, 45, "https://i.imgur.com/kS4h0uE.png", 472, 270,"image");
+  myGate      = new component(25, 45, "https://i.imgur.com/kS4h0uE.png", 472, 270,"image");
 
 // first box
   wall1 = new component(120, 120, "https://i.imgur.com/qu4o6N2.png",0, 21, 'image');
@@ -67,7 +67,7 @@ function startGame() {
   wall21 = new component(100, 100, "https://i.imgur.com/WFxyNof.png", 230, 160, 'image');
 
 //sxth box
-  wall9 = new component(105, 120, "https://i.imgur.com/qu4o6N2.png", 370, 150, 'image');
+  wall9  = new component(105, 120, "https://i.imgur.com/qu4o6N2.png", 370, 150, 'image');
   wall10 = new component(85, 100, "https://i.imgur.com/WFxyNof.png", 380, 160, 'image');
 // Blue wizard
   wall11 = new component(20, 20, "https://i.imgur.com/GyEnDVv.png", 150, 130, 'image');
@@ -94,11 +94,6 @@ function startGame() {
   wall24 = new component(10, 13, "flame.png", 290, 40, 'image');
 
   wall25 = new component(10, 13, "flame.png", 258, 0, 'image');
-  // wall26 = new component(200, 5, "grey", 200, 220);
-  // wall27 = new component(200, 5, "grey", 200, 220);
-  // wall28 = new component(200, 5, "grey", 200, 220);
-  // wall29 = new component(200, 5, "grey", 200, 220);
-  // wall30 = new component(200, 5, "grey", 200, 220);
 
   mySound = new sound("door.mp3");
   mySoundCobra = new cobra("cobra.mp3");
@@ -157,20 +152,11 @@ function component(width, height, color, x, y, type) {
         this.y,
         this.width, this.height);
       }
-      // else if
-      //      (this.type == "text") {
-      //   ctx.font = this.width + " " + this.height;
-      //   ctx.fillStyle = color;
-      //   ctx.fillText(this.text, this.x, this.y);
-      // }
       else {
         ctx.fillStyle = color;
         ctx.fillRect(this.x, this.y, this.width, this.height);
       }
     }
-
-
-
     // Allows the box to stay where its at when it stops moving
     this.newPos = function() {
       this.x += this.speedX;
@@ -179,8 +165,6 @@ function component(width, height, color, x, y, type) {
       this.hitRight();
       this.hitLeft();
       this.hitTop();
-
-
     }
     // this prevents the player from leaving the board
     this.hitTop = () => {
@@ -227,6 +211,7 @@ function component(width, height, color, x, y, type) {
       }
       return crash;
     }
+// This resets the player when the lava is touched//
     this.crashWithWall = function(otherobj,) {
       var myleft = this.x;
       var myright = this.x + (this.width);
@@ -246,7 +231,7 @@ function component(width, height, color, x, y, type) {
       return crash;
     }
   }
-
+// This keeps the the moving piece whole. Not allowing the piece to stretch across the screen//
   function  clearmove() {
     myGamePiece.speedX = 0;
     myGamePiece.speedy = 0;
@@ -480,48 +465,7 @@ function component(width, height, color, x, y, type) {
       startGame();
 
     }
-    // else if(myGamePiece.crashWithWall(wall26)) {
-    //
-    //   mySoundDead.play();
-    //   myGameArea.stop();
-    //   // currentScore += 1;
-    //   startGame();
-    //
-    // }
-    // else if(myGamePiece.crashWithWall(wall27)) {
-    //
-    //   mySoundDead.play();
-    //   myGameArea.stop();
-    //   // currentScore += 1;
-    //   startGame();
-    //
-    // }
-    // else if(myGamePiece.crashWithWall(wall28)) {
-    //
-    //   mySoundDead.play();
-    //   myGameArea.stop();
-    //   // currentScore += 1;
-    //   startGame();
-    //
-    // }
-    // else if(myGamePiece.crashWithWall(wall29)) {
-    //
-    //   mySoundDead.play();
-    //   myGameArea.stop();
-    //   // currentScore += 1;
-    //   startGame();
-    //
-    // }
-    // else if(myGamePiece.crashWithWall(wall30)) {
-    //
-    //   mySoundDead.play();
-    //   myGameArea.stop();
-    //   // currentScore += 1;
-    //   startGame();
-    //
-    // }
-
-    else {
+      else {
       myGameArea.clear();
       myGamePiece.update();
       myGate.update();
@@ -550,11 +494,6 @@ function component(width, height, color, x, y, type) {
       wall23.update();
       wall24.update();
       wall25.update();
-      // wall26.update();
-      // wall27.update();
-      // wall28.update();
-      // wall29.update();
-      // wall30.update();
       myScore.update();
       myGamePiece.newPos();
       myGamePiece.speedX = 0;
