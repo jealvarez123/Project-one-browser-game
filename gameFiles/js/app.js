@@ -50,11 +50,11 @@ function startGame() {
   wall1 = new component(120, 120, "https://i.imgur.com/qu4o6N2.png",0, 21, 'image');
   wall2 = new component(100, 100, "https://i.imgur.com/WFxyNof.png", 10, 30, 'image');
 
-  // second box
+// second box
   wall3 = new component(110, 120, "https://i.imgur.com/qu4o6N2.png", 149, 0, 'image');
   wall4 = new component(90, 100, "https://i.imgur.com/WFxyNof.png", 159, 10, 'image');
 
-  // third box
+// third box
   wall5 = new component(110, 95, "https://i.imgur.com/qu4o6N2.png", 300, 25, 'image');
   wall6 = new component(90, 75, "https://i.imgur.com/WFxyNof.png", 310, 35, 'image');
 
@@ -94,7 +94,7 @@ function startGame() {
   wall24 = new component(10, 13, "flame.png", 290, 40, 'image');
 
   wall25 = new component(10, 13, "flame.png", 258, 0, 'image');
-
+// This is the source of the sounds
   mySound = new sound("door.mp3");
   mySoundCobra = new cobra("cobra.mp3");
   mySoundTrap = new trap("trap.mp3");
@@ -258,7 +258,7 @@ function component(width, height, color, x, y, type) {
       myGameArea.stop()
 
       currentScore += 1;
-      window.confirm("Congatulations! You've escaped. ")
+      window.confirm("Congatulations! You've escaped.")
 
       startGame();
 
