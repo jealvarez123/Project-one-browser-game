@@ -267,7 +267,6 @@ function component(width, height, color, x, y, type) {
 
       mySoundDead.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -275,7 +274,6 @@ function component(width, height, color, x, y, type) {
 
       mySoundDead.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -283,7 +281,6 @@ function component(width, height, color, x, y, type) {
 
       mySoundDead.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -291,7 +288,6 @@ function component(width, height, color, x, y, type) {
 
       mySoundDead.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -299,7 +295,6 @@ function component(width, height, color, x, y, type) {
 
       mySoundDead.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -307,7 +302,6 @@ function component(width, height, color, x, y, type) {
 
       mySoundDead.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -315,7 +309,6 @@ function component(width, height, color, x, y, type) {
 
       mySoundDead.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -323,7 +316,6 @@ function component(width, height, color, x, y, type) {
 
       mySoundCobra.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -331,7 +323,6 @@ function component(width, height, color, x, y, type) {
 
       mySoundDead.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -339,7 +330,6 @@ function component(width, height, color, x, y, type) {
 
       mySoundDead.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -347,7 +337,6 @@ function component(width, height, color, x, y, type) {
 
       mySoundDead.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -356,7 +345,6 @@ function component(width, height, color, x, y, type) {
 
       mySoundDragon.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -364,7 +352,6 @@ function component(width, height, color, x, y, type) {
 
       mySoundDead.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -372,7 +359,6 @@ function component(width, height, color, x, y, type) {
 
       mySoundTrap.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -380,7 +366,6 @@ function component(width, height, color, x, y, type) {
 
       mySoundDead.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -388,7 +373,6 @@ function component(width, height, color, x, y, type) {
 
       mySoundDead.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -396,7 +380,6 @@ function component(width, height, color, x, y, type) {
 
       mySoundDead.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -404,7 +387,6 @@ function component(width, height, color, x, y, type) {
 
       mySoundDead.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -412,14 +394,12 @@ function component(width, height, color, x, y, type) {
 
       mySoundDead.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
     else if(myGamePiece.crashWithWall(wall20)) {
       mySoundDead.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -427,7 +407,6 @@ function component(width, height, color, x, y, type) {
 
       mySoundDead.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -435,7 +414,6 @@ function component(width, height, color, x, y, type) {
 
       mySoundDead.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -444,7 +422,6 @@ function component(width, height, color, x, y, type) {
       mySoundFireball.play();
       mySoundFireball.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
@@ -453,7 +430,6 @@ function component(width, height, color, x, y, type) {
       mySoundFireball.play();
       mySoundFireball.play();
       myGameArea.stop();
-      // currentScore += 1;
       startGame();
 
     }
