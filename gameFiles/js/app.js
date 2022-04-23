@@ -76,24 +76,24 @@ function startGame() {
 
   wall13 = new component(20, 20, "https://i.imgur.com/J9z8u1W.png", 450, 130, 'image');
 
-  wall14 = new component(20, 20, "chest.png", 270, 275, 'image');
+  wall14 = new component(20, 20, "https://i.imgur.com/m9czeEV.png", 270, 275, 'image');
 
-  wall15 = new component(26, 26, "bonedragon.png", 450, 100, 'image');
+  wall15 = new component(26, 26, "https://i.imgur.com/HLyTj7f.png", 450, 100, 'image');
 
-  wall16 = new component(20, 20, "bonefist.png", 470, 50, 'image');
+  wall16 = new component(20, 20, "https://i.imgur.com/6QyQgXa.png", 470, 50, 'image');
 
-  wall17 = new component(22, 26, "trap.png", 475, 240, 'image');
+  wall17 = new component(22, 26, "https://i.imgur.com/VQiyG3I.png", 475, 240, 'image');
 
-  wall18 = new component(22, 26, "cobra.png", 285, 124, 'image');
+  wall18 = new component(22, 26, "https://i.imgur.com/fX75QFj.png", 285, 124, 'image');
 
-  wall19 = new component(22, 26, "bosstop.png", 50, 205, 'image');
-  wall22 = new component(22, 26, "bossfeet.png", 52, 230, 'image');
+  wall19 = new component(22, 26, "https://i.imgur.com/g1vGT0N.png", 50, 205, 'image');
+  wall22 = new component(22, 26, "https://i.imgur.com/bHZxEvO.png", 52, 230, 'image');
 
-  wall23 = new component(10, 13, "flame.png", 257, 80, 'image');
+  wall23 = new component(10, 13, "https://i.imgur.com/G0EXxO4.png", 257, 80, 'image');
 
-  wall24 = new component(10, 13, "flame.png", 290, 40, 'image');
+  wall24 = new component(10, 13, "https://i.imgur.com/G0EXxO4.png", 290, 40, 'image');
 
-  wall25 = new component(10, 13, "flame.png", 258, 0, 'image');
+  wall25 = new component(10, 13, "https://i.imgur.com/G0EXxO4.png", 258, 0, 'image');
 // This is the source of the sounds
   mySound = new sound("door.mp3");
   mySoundCobra = new cobra("cobra.mp3");
