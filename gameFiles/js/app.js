@@ -71,28 +71,26 @@ function startGame() {
   wall10 = new component(85, 100, "https://i.imgur.com/WFxyNof.png", 380, 160, 'image');
 // Blue wizard
   wall11 = new component(20, 20, "https://i.imgur.com/GyEnDVv.png", 150, 130, 'image');
-
+// red dragon
   wall12 = new component(26, 26, "https://i.imgur.com/HlHwGxn.png", 20, 150, 'image');
-
+// reaper
   wall13 = new component(20, 20, "https://i.imgur.com/J9z8u1W.png", 450, 130, 'image');
-
+// Chest
   wall14 = new component(20, 20, "https://i.imgur.com/m9czeEV.png", 270, 275, 'image');
-
+//Bone Dragon
   wall15 = new component(26, 26, "https://i.imgur.com/HLyTj7f.png", 450, 100, 'image');
-
+// Bone Fist
   wall16 = new component(20, 20, "https://i.imgur.com/6QyQgXa.png", 470, 50, 'image');
-
+// Trap
   wall17 = new component(22, 26, "https://i.imgur.com/VQiyG3I.png", 475, 240, 'image');
-
+// Cobra
   wall18 = new component(22, 26, "https://i.imgur.com/fX75QFj.png", 285, 124, 'image');
-
+//Boss Top and Bottom
   wall19 = new component(22, 26, "https://i.imgur.com/g1vGT0N.png", 50, 205, 'image');
   wall22 = new component(22, 26, "https://i.imgur.com/bHZxEvO.png", 52, 230, 'image');
-
+//Flame
   wall23 = new component(10, 13, "https://i.imgur.com/G0EXxO4.png", 257, 80, 'image');
-
   wall24 = new component(10, 13, "https://i.imgur.com/G0EXxO4.png", 290, 40, 'image');
-
   wall25 = new component(10, 13, "https://i.imgur.com/G0EXxO4.png", 258, 0, 'image');
 // This is the source of the sounds
   mySound = new sound("door.mp3");
@@ -121,7 +119,6 @@ var myGameArea = {
     window.addEventListener('keyup', function (e) {
       myGameArea.key = false;
     })
-
   },
   clear : function() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -191,7 +188,6 @@ function component(width, height, color, x, y, type) {
         this.x = myleft;
       }
     }
-
     //This allows the player to hit the gate and end the game.
     this.crashWith = function(otherobj) {
       var myleft = this.x;
@@ -439,7 +435,6 @@ function component(width, height, color, x, y, type) {
       mySoundFireball.play();
       myGameArea.stop();
       startGame();
-
     }
       else {
       myGameArea.clear();
@@ -493,6 +488,9 @@ function component(width, height, color, x, y, type) {
       }
     }
   }
+
+
+// This section holds all the functions that put the sounds to work
   function sound(src) {
     this.sound = document.createElement("audio");
     this.sound.src = src;
