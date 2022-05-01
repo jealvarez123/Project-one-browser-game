@@ -1,5 +1,5 @@
 console.log('Can I kick it?');
-// This stores the game pieces
+
 var myGamePiece;
 var myGate;
 var myBadguy;
@@ -42,7 +42,7 @@ function GameOver (){
   var myGamePiece;
 }
 function startGame() {
-  //                      (width, heigth, color, x, y)
+//                                  (width, heigth, color, x, y, type)
   myGamePiece = new component(20, 20, "https://i.imgur.com/LoLi4XG.png", 0, 0,"image");
   myGate      = new component(25, 45, "https://i.imgur.com/kS4h0uE.png", 472, 270,"image");
 
@@ -66,9 +66,11 @@ function startGame() {
   wall20 = new component(120, 120, "https://i.imgur.com/qu4o6N2.png", 220, 150, 'image');
   wall21 = new component(100, 100, "https://i.imgur.com/WFxyNof.png", 230, 160, 'image');
 
-//sxth box
+//sixth box
   wall9  = new component(105, 120, "https://i.imgur.com/qu4o6N2.png", 370, 150, 'image');
   wall10 = new component(85, 100, "https://i.imgur.com/WFxyNof.png", 380, 160, 'image');
+
+// these are enemy pieces
 // Blue wizard
   wall11 = new component(20, 20, "https://i.imgur.com/GyEnDVv.png", 150, 130, 'image');
 // red dragon
@@ -231,8 +233,7 @@ function component(width, height, color, x, y, type) {
   function  clearmove() {
     myGamePiece.speedX = 0;
     myGamePiece.speedy = 0;
-
-  }
+}
   // this updates the board, which is just a refresh rate. This also affects piece movement
   var currentScore = 0;
   function updateGameArea() {
@@ -488,8 +489,6 @@ function component(width, height, color, x, y, type) {
       }
     }
   }
-
-
 // This section holds all the functions that put the sounds to work
   function sound(src) {
     this.sound = document.createElement("audio");
